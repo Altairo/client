@@ -1,6 +1,12 @@
 <?php
 
-$params = require(__DIR__ . '/params.php');
+use yii\helpers\ArrayHelper;
+
+//$params = require(__DIR__ . '/params.php');
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 $db = require(__DIR__ . '/db.php');
 
 $config = [
@@ -12,14 +18,14 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'log' => [
+        /*'log' => [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ],
+        ],*/
         'db' => $db,
     ],
     'params' => $params,

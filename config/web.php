@@ -1,6 +1,13 @@
 <?php
 
-$params = require(__DIR__ . '/params.php');
+use yii\helpers\ArrayHelper;
+
+//$params = require(__DIR__ . '/params.php');
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
+
 $db = require(__DIR__ . '/db.php');
 
 $config = [
@@ -9,10 +16,10 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
     'components' => [
-        'request' => [
+      //  'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'T_toCjY2bDnVOK26rHRsRn5-ng01LoO7',
-        ],
+       //     'cookieValidationKey' => '',
+      //  ],
         'baseUrl' => '',
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -21,6 +28,11 @@ $config = [
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>' => '<_c>/index',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+                /*'<_m:[\w\-]+>' => '<_m>/web/index',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w-]+>' => '<_m>/<_c>/<_a>',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',*/
             ],
         ],
         'as access' => [

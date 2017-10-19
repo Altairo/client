@@ -8,7 +8,12 @@
 
 namespace bootstrap;
 
-class Setup
+use yii\base\BootstrapInterface;
+
+class SetUp implements BootstrapInterface
 {
+    public function bootstrap($app) {
+
+    }
 
 }
