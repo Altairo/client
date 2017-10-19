@@ -13,6 +13,13 @@ return [
             'log',
             'bootstrap\SetUp',
         ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                ],
+            ],
+         ],
         'mailer' => [
             'useFileTransport' => true,
         ],
